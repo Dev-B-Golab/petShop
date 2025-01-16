@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  nginx-proxy-smart-pet:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - pet_network
+
+  petStore:
+    image: webdevops/php-nginx:8.2
+    container_name: petStore
+    volumes:
+      - ../:/app
+    environment:
+      - WEB_DOCUMENT_ROOT=/app/petStore/public
+      - VIRTUAL_HOST=pet-store.local
+    networks:
+      - pet_network
+    restart: always 
+
+networks:
+  pet_network:
+    external: true
