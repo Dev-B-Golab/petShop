@@ -24,6 +24,8 @@ Route::get('/petsMenu', [PetStore::class, 'petMainView']);
 
 Route::get('/petsMenu/id', [PetsApi::class, 'getPetsById']);
 
+Route::get('/petsMenu/status', [PetsApi::class, 'getPetsByStatus']);
+
 // Store views
 Route::get('/storeMenu', [PetStore::class, 'storeMainView']);
 
@@ -31,9 +33,9 @@ Route::get('/storeMenu', [PetStore::class, 'storeMainView']);
 Route::get('/userMenu', [PetStore::class, 'userMainView']);
 
 // Pets API
-Route::get('/pets/findByStatus', [PetsApi::class, 'getPetsByStatus']);
+// Route::get('/pets/findByStatus', [PetsApi::class, 'getPetsByStatus']);
 
-Route::get('/pets/{id}', [PetsApi::class, 'getPetsById']);
+// Route::get('/pets/{id}', [PetsApi::class, 'getPetsById']);
 
 // Stores API
 Route::get('/store/inventory', [StoresApi::class, 'getStoreInventory']);

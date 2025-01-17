@@ -15,12 +15,12 @@
             </form>
         </div>
         <div class="col-sm-6">
-            <form action="" method="GET">
+            <form action="/petsMenu/status" method="GET">
                 @csrf
                 <h2>Find pet by status (GET:/pet/findByStatus)</h2>
                 <div class="form-group mb-3">
-                    <label for="petStatus">Status</label>
-                    <select class="form-control" id="petStatus" name="petStatus">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status">
                         <option value="available" selected>Available</option>
                         <option value="pending">Pending</option>
                         <option value="sold">Sold</option>

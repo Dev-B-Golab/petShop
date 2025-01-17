@@ -1,11 +1,11 @@
 @extends('layout.layout')
 
-@section('title', 'Finded Pet by ID')
+@section('title', 'Finded Pet by Status')
 
 @section('content')
     <div class="row mt-5">
         <div class="col-sm-12">
-            @if(isset($pet))
+            @if(isset($pets))
             <table class="table table-striped text-center">
                 <thead>
                     <tr>
@@ -19,11 +19,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($pets as $key => $pet)
                     <tr>
-                        <td>{{ $pet['id'] }}</td>
-                        <td>{{ $pet['category']['id'] }}</td>
-                        <td>{{ $pet['category']['name'] }}</td>
-                        <td>{{ $pet['name'] }}</td>
+                        <td>{{ isset($pet['id']) ? $pet['id'] : '' }}</td>
+                        <td>{{ isset($pet['category']['id']) ? $pet['category']['id'] : ''}}</td>
+                        <td>{{ isset($pet['category']['name']) ? $pet['category']['name'] : ''}}</td>
+                        <td>{{ isset($pet['name']) ? $pet['name'] : '' }}</td>
                         <td>
                             @foreach ($pet['photoUrls'] as $photoUrl)
                                 <a href="{{ $photoUrl }}">{{ $photoUrl }}</a><br>
@@ -31,18 +32,22 @@
                         </td>
                         <td>
                             @foreach ($pet['tags'] as $tag)
-                                {{ $tag['name'] }}<br>
+                                {{ isset($tag['name']) ? $tag['name'] : '' }}<br>
                             @endforeach
                         </td>
                         <td>{{ $pet['status'] }}</td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
             @elseif(isset($error))
-            <h1>Error</h1>
-            <p>{{ $error }}</p>
+                <h1>Error</h1>
+                <p>{{ $error }}</p>
             @endif
         </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        {{ $pets->links('vendor.pagination.bootstrap-5') }}
     </div>
     <div class="row mt-5">
         <div class="col-sm-12">
