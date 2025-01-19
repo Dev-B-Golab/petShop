@@ -49,6 +49,18 @@ Route::delete('/storeMenu/deleteOrder', [StoresApi::class, 'deleteOrderById']);
 // User views
 Route::get('/userMenu', [UsersApi::class, 'userMainView']);
 
-// Users API
+Route::get('/userMenu/userByName', [UsersApi::class, 'getUser']);
 
-Route::get('/user/{username}', [UsersApi::class, 'getUser']);
+Route::get('/userMenu/login', [UsersApi::class, 'login']);
+
+Route::get('/userMenu/logout', [UsersApi::class, 'logout']);
+
+Route::post('/userMenu/addUser', [UsersApi::class, 'addUser']);
+
+Route::put('/userMenu/updateUser', [UsersApi::class, 'updateUser']);
+
+Route::delete('/userMenu/deleteUser', [UsersApi::class, 'deleteUser']);
+
+Route::post('/userMenu/createWithArray', [UsersApi::class, 'addUserArray']);
+
+Route::post('/userMenu/createWithList', [UsersApi::class, 'addUserList']);

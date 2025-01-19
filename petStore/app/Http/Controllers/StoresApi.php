@@ -50,7 +50,7 @@ class StoresApi extends Controller
         if ($response->successful()) {
             return redirect()->back()->with('success', 'Order added successfully');
         } else {
-            return redirect()->back()->with(['error', 'Invalid order']);
+            return redirect()->back()->with('error', 'Invalid order');
         }
     }
     public function searchOrderById(Request $request)

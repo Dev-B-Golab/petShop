@@ -1,6 +1,6 @@
 @extends('layout.layout')
 
-@section('title', 'Store Menu')
+@section('title', 'Store by ID')
 @section('content')
     <div class="row mt-5">
         <div class="col-md-12">
