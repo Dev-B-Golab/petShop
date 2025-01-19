@@ -214,12 +214,19 @@ class PetsApi extends Controller
         $petId = $request->input('petId');
         $name = $request->input('name');
         $status = $request->input('status');
+         
+        $urlCheck = env('API_URL') . 'pet/' . $petId;
+        $responseCheck = Http::get($urlCheck);
+
+        if ($responseCheck->status() == 404) {
+            return response()->json(['error' => 'Pet not found'], 404);
+        } elseif ($responseCheck->status() == 400) {
+            return response()->json(['error' => 'Invalid ID supplied'], 400);
+        }
         
         $url = env('API_URL').'pet/'.$petId;
 
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-        ])->post($url, [
+        $response = Http::post($url, [
             'name' => $name,
             'status' => $status,
         ]);
