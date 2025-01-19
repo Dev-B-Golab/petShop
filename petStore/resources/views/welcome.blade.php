@@ -6,12 +6,6 @@
         <div class="col-sm-4">
             <a class="btn btn-primary btn-lg" href="/petsMenu">Pets</a>
         </div>
-        <div class="col-sm-4">
-            <a class="btn btn-secondary btn-lg" href="/storeMenu">Store</a>
-        </div>
-        <div class="col-sm-4">
-            <a class="btn btn-dark btn-lg" href="/userMenu">User</a>
-        </div>
     </div>
 @endsection
 
