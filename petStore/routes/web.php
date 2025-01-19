@@ -38,15 +38,16 @@ Route::post('/pet/{petId}/uploadImage', [PetsApi::class, 'uploadImage']);
 // Store views
 Route::get('/storeMenu', [StoresApi::class, 'storeMainView']);
 
+Route::get('/storeMenu/storeInventory', [StoresApi::class, 'storeInventory']);
+
 Route::post('/storeMenu/addOrder', [StoresApi::class, 'addOrder']);
+
+Route::get('/storeMenu/orderById', [StoresApi::class, 'searchOrderById']);
+
+Route::delete('/storeMenu/deleteOrder', [StoresApi::class, 'deleteOrderById']);
 
 // User views
 Route::get('/userMenu', [UsersApi::class, 'userMainView']);
-
-// Stores API
-// Route::get('/store/inventory', [StoresApi::class, 'getStoreInventory']);
-
-// Route::get('/store/order/{orderId}', [StoresApi::class, 'getStoreOrder']);
 
 // Users API
 

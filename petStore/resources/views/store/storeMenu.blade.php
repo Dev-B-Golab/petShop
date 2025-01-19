@@ -24,29 +24,35 @@
                     <button type="submit" class="btn btn-primary mt-2">Submit</button>
                 </div>
             </form>
+            <h2>Search pet order (GET) /store/order{orderId}</h2>
+            <form action="/storeMenu/orderById" method="GET">
+                @csrf
+                <div class="form-group">
+                    <div>
+                        <label for="orderId" class="form-label">Pet ID</label>
+                        <input type="number" class="form-control" name="orderId" id="orderId" required>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+            </form>
+            <h2>Delete pet order (DELETE) /store/order{orderId}</h2>
+            <form action="/storeMenu/deleteOrder" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="form-group">
+                    <div>
+                        <label for="orderId" class="form-label">Pet ID</label>
+                        <input type="number" class="form-control" name="orderId" id="orderId" required>
+                    </div>
+    
+                    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                </div>
+            </form>
         </div>
         <div class="col-md-6">
-            @if (isset($storeMenu))
             <h2>(GET)/store/inventory</h2>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Status</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($storeMenu as $status => $quantity)
-                        <tr>
-                            <td>{{ $status }}</td>
-                            <td>{{ $quantity }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @else
-                <p>No status available</p>
-            @endif
+            <a class="btn btn-primary" href="/storeMenu/storeInventory">Inventory</a>
         </div>
     </div>
 @endsection
