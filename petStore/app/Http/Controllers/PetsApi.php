@@ -232,19 +232,16 @@ class PetsApi extends Controller
     }
     public function uploadImage(Request $request)
     {
-        // Walidacja dla tablicy photoUrls
         $request->validate([
             'petId' => 'required|numeric',
-            'photoUrls' => 'required|array', // photoUrls musi być tablicą
-            'photoUrls.*' => 'string|url|max:2048', // Każdy element w tablicy musi być stringiem, być prawidłowym URL-em i mieć długość do 2048 znaków
+            'photoUrls' => 'required|array', 
+            'photoUrls.*' => 'string|url|max:2048',
             'additionalMetadata' => 'nullable|string|max:255',
         ]);
 
-        // Sprawdzamy, czy zostały przesłane prawidłowe URL-e
         if (!empty($request->input('photoUrls'))) {
-            $photoUrls = $request->input('photoUrls'); // Tablica z URL-ami zdjęć
+            $photoUrls = $request->input('photoUrls');
 
-            // Przygotowujemy dane do wysłania
             $url = env('API_URL') . 'pet/' . $request->input('petId') . '/uploadImage';
 
             $response = Http::post($url, [
@@ -252,7 +249,6 @@ class PetsApi extends Controller
                 'additionalMetadata' => $request->input('additionalMetadata'),
             ]);
 
-            // Sprawdzamy odpowiedź z API
             if ($response->successful()) {
                 return redirect()->back()->with('success', 'Images uploaded successfully');
             } else {
