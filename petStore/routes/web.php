@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PetStore;
 use App\Http\Controllers\PetsApi;
 use App\Http\Controllers\StoresApi;
 use App\Http\Controllers\UsersApi;
@@ -20,28 +19,48 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Pets views
-Route::get('/petsMenu', [PetStore::class, 'petMainView']);
+Route::get('/petsMenu', [PetsApi::class, 'petMainView']);
 
 Route::get('/petsMenu/id', [PetsApi::class, 'getPetsById']);
 
 Route::get('/petsMenu/status', [PetsApi::class, 'getPetsByStatus']);
 
+Route::post('/petsMenu/addPet', [PetsApi::class, 'addPet']);
+
+Route::delete('/petsMenu/delete', [PetsApi::class, 'deletePetById']);
+
+Route::put('/petsMenu/updatePet', [PetsApi::class, 'updatePet']);
+
+Route::post('/petsMenu/updatePetStatus', [PetsApi::class, 'updatePetStatus']);
+
+Route::post('/pet/{petId}/uploadImage', [PetsApi::class, 'uploadImage']);
+
 // Store views
-Route::get('/storeMenu', [PetStore::class, 'storeMainView']);
+Route::get('/storeMenu', [StoresApi::class, 'storeMainView']);
+
+Route::get('/storeMenu/storeInventory', [StoresApi::class, 'storeInventory']);
+
+Route::post('/storeMenu/addOrder', [StoresApi::class, 'addOrder']);
+
+Route::get('/storeMenu/orderById', [StoresApi::class, 'searchOrderById']);
+
+Route::delete('/storeMenu/deleteOrder', [StoresApi::class, 'deleteOrderById']);
 
 // User views
-Route::get('/userMenu', [PetStore::class, 'userMainView']);
+Route::get('/userMenu', [UsersApi::class, 'userMainView']);
 
-// Pets API
-// Route::get('/pets/findByStatus', [PetsApi::class, 'getPetsByStatus']);
+Route::get('/userMenu/userByName', [UsersApi::class, 'getUser']);
 
-// Route::get('/pets/{id}', [PetsApi::class, 'getPetsById']);
+Route::get('/userMenu/login', [UsersApi::class, 'login']);
 
-// Stores API
-Route::get('/store/inventory', [StoresApi::class, 'getStoreInventory']);
+Route::get('/userMenu/logout', [UsersApi::class, 'logout']);
 
-Route::get('/store/order/{orderId}', [StoresApi::class, 'getStoreOrder']);
+Route::post('/userMenu/addUser', [UsersApi::class, 'addUser']);
 
-// Users API
+Route::put('/userMenu/updateUser', [UsersApi::class, 'updateUser']);
 
-Route::get('/user/{username}', [UsersApi::class, 'getUser']);
+Route::delete('/userMenu/deleteUser', [UsersApi::class, 'deleteUser']);
+
+Route::post('/userMenu/createWithArray', [UsersApi::class, 'addUserArray']);
+
+Route::post('/userMenu/createWithList', [UsersApi::class, 'addUserList']);

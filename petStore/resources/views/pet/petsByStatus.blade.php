@@ -51,8 +51,8 @@
     </div>
     <div class="row mt-5">
         <div class="col-sm-12">
-            <a href="/petsMenu" class="btn btn-warning">Update</a>
-            <a href="/petsMenu" class="btn btn-danger">Delete</a>
+            {{-- <a href="/petsMenu" class="btn btn-warning">Update</a>
+            <a href="/petsMenu" class="btn btn-danger">Delete</a> --}}
         </div>
     </div>
 @endsection

@@ -9,7 +9,7 @@
                 <h2>Find pet by ID (GET:/pet/petId)</h2>
                 <div class="form-group mb-3">
                     <label for="petId">Id</label>
-                    <input type="text" class="form-control" id="petId" name="petId" value="1">
+                    <input type="text" class="form-control" id="petId" name="petId" value="34567">
                 </div>
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
@@ -32,23 +32,14 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <form action="" method="POST">
+            <form action="/petsMenu/addPet" method="POST">
                 @csrf
                 <h2>Add new pet (POST:/pet)</h2>
                 <div class="form-group">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">ID</label>
-                        <input type="number" class="form-control" id="id" name="id" value="0">
-                    </div>
-        
                     <!-- Category -->
                     <div class="mb-3">
-                        <label for="categoryId" class="form-label">Category ID</label>
-                        <input type="number" class="form-control" id="categoryId" name="category.id" value="0">
-                    </div>
-                    <div class="mb-3">
                         <label for="categoryName" class="form-label">Category Name</label>
-                        <input type="text" class="form-control" id="categoryName" name="category.name" value="string">
+                        <input type="text" class="form-control" id="categoryName" name="categoryName" value="string">
                     </div>
         
                     <!-- Name -->
@@ -65,12 +56,8 @@
         
                     <!-- Tags -->
                     <div class="mb-3">
-                        <label for="tagId" class="form-label">Tag ID</label>
-                        <input type="number" class="form-control" id="tagId" name="tags[0].id" value="0">
-                    </div>
-                    <div class="mb-3">
                         <label for="tagName" class="form-label">Tag Name</label>
-                        <input type="text" class="form-control" id="tagName" name="tags[0].name" value="string">
+                        <input type="text" class="form-control" id="tagName" name="tagName" value="string">
                     </div>
         
                     <!-- Status -->
@@ -78,6 +65,22 @@
         
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <form action="/petsMenu/delete" method="POST">
+                @csrf
+                @method('DELETE')
+                <h2>Delete pet by id (DELETE:/pet/petId)</h2>
+                <div class="form-group">
+                    <!-- ID -->
+                    <div class="mb-3">
+                        <label for="petId" class="form-label">ID</label>
+                        <input type="number" class="form-control" id="petId" name="petId" placeholder="Enter Pet ID" required>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Delete</button>
                 </div>
             </form>
         </div>
