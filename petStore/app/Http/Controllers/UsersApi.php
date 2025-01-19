@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersApi extends Controller
 {
-    
+    public function userMainView(){
+        return view('user.userMenu');
+    }
 
     public function getUser($username)
     {

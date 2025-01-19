@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PetStore;
 use App\Http\Controllers\PetsApi;
 use App\Http\Controllers\StoresApi;
 use App\Http\Controllers\UsersApi;
@@ -20,27 +19,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Pets views
-Route::get('/petsMenu', [PetStore::class, 'petMainView']);
+Route::get('/petsMenu', [PetsApi::class, 'petMainView']);
 
 Route::get('/petsMenu/id', [PetsApi::class, 'getPetsById']);
 
 Route::get('/petsMenu/status', [PetsApi::class, 'getPetsByStatus']);
 
+Route::post('/petsMenu/addPet', [PetsApi::class, 'addPet']);
+
+Route::delete('/petsMenu/delete', [PetsApi::class, 'deletePetById']);
+
+Route::put('/petsMenu/updatePet', [PetsApi::class, 'updatePet']);
+
+Route::post('/petsMenu/updatePetStatus', [PetsApi::class, 'updatePetStatus']);
+
+Route::post('/pet/{petId}/uploadImage', [PetsApi::class, 'uploadImage']);
+
 // Store views
-Route::get('/storeMenu', [PetStore::class, 'storeMainView']);
+Route::get('/storeMenu', [StoresApi::class, 'storeMainView']);
+
+Route::post('/storeMenu/addOrder', [StoresApi::class, 'addOrder']);
 
 // User views
-Route::get('/userMenu', [PetStore::class, 'userMainView']);
-
-// Pets API
-// Route::get('/pets/findByStatus', [PetsApi::class, 'getPetsByStatus']);
-
-// Route::get('/pets/{id}', [PetsApi::class, 'getPetsById']);
+Route::get('/userMenu', [UsersApi::class, 'userMainView']);
 
 // Stores API
-Route::get('/store/inventory', [StoresApi::class, 'getStoreInventory']);
+// Route::get('/store/inventory', [StoresApi::class, 'getStoreInventory']);
 
-Route::get('/store/order/{orderId}', [StoresApi::class, 'getStoreOrder']);
+// Route::get('/store/order/{orderId}', [StoresApi::class, 'getStoreOrder']);
 
 // Users API
 
